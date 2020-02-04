@@ -1,0 +1,102 @@
+%-- 02/04/2020 02:39:43 PM --%
+mk dir
+mkdir lab1
+cd lab1
+diary lab1._diary.m
+Vm = [-1 0.3  1.5 2.5 3.2];
+Im = [1.1 2.2 2.1 3.2 4.7]*1e-3;
+plot(Vm,Im, 'o-')
+%aprakstisim tos datus ar 2. kārtas polinomu
+%y=C1*x^2+C2*x+C3
+%to koeff. atradis funkckcija polyfit - polynominal fitting
+%sitakse
+%C= polyfit (x,y,N)
+%N - polionoma kārta
+C = polyfit(Vm,Im,2)
+saformēsīm vektoru x ar sīkāko soli
+%saformēsīm vektoru x ar sīkāko soli
+V = -1:0.01:3.2;
+% aprēķināsim y
+I = C(1)*x.^2+C(2)*x+C(3)
+I = C(1)*V.^2+C(2)*V+C(3);
+plot(Vm,Im,'o',V,I)
+%atkartosim to priekš 3.kārtas polinoma
+C = polyfit(Vm,Im,3)
+I = C(1)*V.^2+C(2)*V+C(3);
+plot(Vm,Im,'o',V,I)
+I = C(1)*V.^3+C(2)*V.^2+C(3)*V+C(4);
+plot(Vm,Im,'o',V,I)
+C = polyfit(Vm,Im,4);
+I = C(1)*V.^4+C(2)*V.^3+C(3)*V.^2+C(4)*V+C(5);
+plot(Vm,Im,'o',V,I)
+%vēl reiz arkārtojām
+% lai nerakstītu I = C(1)*V.^4+C(2)*V.^3+C(3)*V.^2+C(4)*V+C(5);
+% izmanto polyval - polynominal
+%y = polyval(C,x)
+I=polyval(C,V);
+plot(Vm,Im,'o',V,I)
+%atkārtot 1.kārtai
+C = polyfit(Vm,Im,1);
+I=polyval(C,V);
+plot(Vm,Im,'o',V,I)
+%% Mērījumu sērijas
+Vm = [-1 0.3  1.5 2.5 3.2];
+Im = [1.1 2.2 2.1 3.2 4.7
+0.9 1.8 2.6 3.3 4.5
+1.0 2.0 2.4 3.4 4.3
+0.8 1.9 2.5 3.5 4.6
+0.9 2.0 2.3 3.1 4.4];
+plot(Vm,Im,'o',V,I)
+Vm = [-1 0.3  1.5 2.5 3.2];
+Im = [1.1 2.2 2.1 3.2 4.7]*1e-3;
+plot(Vm,Im,'o',V,I)
+Im = [1.1 2.2 2.1 3.2 4.7
+0.9 1.8 2.6 3.3 4.5
+1.0 2.0 2.4 3.4 4.3
+0.8 1.9 2.5 3.5 4.6
+0.9 2.0 2.3 3.1 4.4];
+figure
+plot(Vm,Im,'o-')
+plot(Vm,Im','o-')
+%% vid. vērt. atrāšāna
+sum([1 2 3 4 5])
+sum([1 2;3 4])
+Ivid = sum(Im/5);
+Ivid = mean(Im)]
+Ivid = mean(Im)
+%%
+%vidējai vērtībai pielaiokosim polinomu
+C = polyfit(Vm,Ivid,4);
+V = -1:0.01:3.2;
+I = polyval(C,V);
+%uzzīmēt 3 grafikus vienās asīs
+plot(Vm,Im,'o',Vm,Ivid','*',V,I,'-');
+plot(Vm,Im','o',Vm,Ivid','*',V,I,'-');
+plot(Vm,Im','--',Vm,Ivid','*',V,I,'-');
+plot(Vm,Im','--o',Vm,Ivid','*',V,I,'-');
+plot(Vm,Im','o',Vm,Ivid','*',V,I,'-');
+0.0002   -0.0004    0.0003    0.0021
+%%
+% aprēķināsim standartnovirzi
+Istd = std(Im)
+errorbar(Vm,Ivid,Istd)
+%mēģināsim tikt vaļā no lauztas līnijas
+errorbar(Vm,Ivid,Istd,'.')
+hold on
+plot(V,I)
+hold off
+ls
+%%Datu iegūšana no rasējuma
+A = imread('bilde1.png');
+B = imread('bilde2.png');
+figure(1), image(A)
+figure(2), image(B)
+figure(2), image([500,800],[0,1],B)
+figure(2), image([500,800],[1,0],B)
+set(gca,'YDir','normal')
+[x,y]=ginput(1)
+[x,y]=ginput(10);
+hold on
+plot(x,y,'o')
+hold off
+diary off
