@@ -1,0 +1,28 @@
+%% 2.laboratorijas darbs
+% Artemijs Rilevs
+%% Darba uzdevumi
+%
+% *  jāatrisina ar solve, izteiksmi un rezultātu ielikt atskaitē(pretty)
+% *  jāatrisina atvasinájumu, gan sākuma izteiksmi, gan rezultātu attēlot uz viena grafika, grafikam
+% *  virsū uzlikt legend ar abām formulām "latex izskatā"
+syms a b c x;
+X=solve((c+a*x+b*sqrt(x))/(x-1)==1, x);
+pretty(X)
+% Atrast atvasinajumu
+syms y x;
+y=1/(x-cos(x));
+yd=simplify(diff(y));
+ydv=vectorize(yd);
+yv=vectorize(y);
+x=0.5:0.01:1;
+yvm = eval(yv);
+ydvm = eval(ydv);
+plot(x,yvm,'o',x,ydvm)
+a = latex(y)
+b = latex(yd)
+text(0.6,-2,['$$',a,'$$'],'Interpreter','latex','FontSize',16);
+h = legend(['$',a,'$'],['$',b,'$']);
+set(h,'Interpreter','latex','FontSize',16)
+%% Secinaajumi
+% Saja darba iemacijos risinat vienadojumus un atvasinajumos matlab videe,
+% ka ari noformet rezultatus parskatama veida.
