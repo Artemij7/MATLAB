@@ -1,0 +1,127 @@
+%% interpol ar kubisk datiem
+a = 5;
+i0=1e-6;
+Ud=0:0.01:2;
+Id=i0*(exp(a*Ud)-1);
+Udk=[2 1.85 1.48 1 0.4261 0];
+Idk=[21.1 10 1.7 0.3 0.00738 0]*1e-3;
+plot(Ud,Id,Udk,Idk,'o')
+hold on
+%% pielaikosim splainus
+% uztaisisim x vektoru ar sikaku soli
+U = 0:0.01:2;
+I = spline(Udk,Idk,U);
+plot(U,I,':')
+%% analizesim kas ir splaini
+plot(Ud,Id,Udk,Idk,'o')
+plot(U,I,':')
+plot(Ud,Id,Udk,Idk,'o')
+hold on
+plot(U,I,':')
+%% analizesim kas ir splaini
+%% uzzimesim katru splainu atseviski
+%% ka tikt pie splainu koefficientiem
+I = spline(Udk,Idk);
+I = spline(Udk,Idk)
+pp = spline(Udk,Idk)
+I = spline(Udk,Idk,U);
+%% uzzimesim katru splainu atseviski
+%%1.splains
+x1=pp.breaks(1):0.01:pp.breaks(2);
+s1=polyval(pp.coefs(1,:),x1);
+h11 = plot(x1,s1,'r');set(h11,'LineWidth',5)
+%% 2.splains
+x2=0.4261:0.01:1;
+s2=polyval(pp.coefs(2,:),x2);
+s2=polyval(pp.coefs(2,:),x2-0.4261);
+h12 = plot(x2,s2,'g');set(h12,'LineWidth',5)
+%% 3.splains
+x3=1:0.01:1.48;
+s3=polyval(pp.coefs(3,:),x3-1);
+h13 = plot(x3,s3,'b');set(h13,'LineWidth',5)
+%% 4
+x4=1.48:0.01:1.85;
+s4=polyval(pp.coefs(4,:),x4-1.48);
+h14 = plot(x4,s4,'y');set(h14,'LineWidth',5)
+%% 5
+x5=1.85:0.01:2;
+s5=polyval(pp.coefs(5,:),x5-2);
+s5=polyval(pp.coefs(5,:),x5-1.85);
+h15 = plot(x5,s5,'c');set(h15,'LineWidth',5)
+%% atkartisim to pasu tikai plasakos intervalos
+% lai redzetu kur iet splaini
+delete(h15)
+delete(h14)
+delete(h13)
+delete(h12)
+delete(h11)
+%%1.splains
+x1=0:0.01:2;
+s1=polyval(pp.coefs(1,:),x1);
+h11 = plot(x1,s1,'r');set(h11,'LineWidth',5)
+x2=0:0.01:2;
+s2=polyval(pp.coefs(2,:),x2-0.4261);
+h12 = plot(x2,s2,'g');set(h12,'LineWidth',5)
+h11 = plot(x1,s1,'r');set(h11,'LineWidth',5)
+h12 = plot(x2,s2,'g:');set(h12,'LineWidth',5)
+%3
+x3=0:0.01:2;
+s3=polyval(pp.coefs(3,:),x3-1);
+h13 = plot(x3,s3,'b:');set(h13,'LineWidth',5)
+%4
+x4=0:0.01:2;
+s4=polyval(pp.coefs(4,:),x4-1.48);
+h14 = plot(x4,s4,'y:');set(h14,'LineWidth',5)
+% 5
+x5=1.85:0.01:2;
+x5=0:0.01:2;
+s5=polyval(pp.coefs(5,:),x5-1.85);
+h15 = plot(x5,s5,'c:');set(h15,'LineWidth',5)
+h14 = plot(x4,s4,'y');set(h14,'LineWidth',5)
+h15 = plot(x5,s5,'c:');set(h15,'LineWidth',5)
+ylim([0 22e-3])
+ylim([-22e-3 22e-3])
+%% nakamais experements
+%% parbaudisim vai 1. un 2 atvs. sakrit
+%% paniemsim sinusoidu
+%% kurai merijumu punktus izvelesimies max un min punnktos
+figure
+t = 0:0.01:2*pi;
+y=sin(3*t);
+tm = 0+pi/6:2*pi/6:2*pi-pi/6;
+ym=sin(3*t);
+plot(t,y,tm,ym,'o')
+y=sin(3*tm);
+plot(t,y,tm,ym,'o')
+y=sin(3*t);
+ym=sin(3*tm);
+plot(t,y,tm,ym,'o')
+%% tagad veidosim splainu aproksimaciju
+figure
+subplot(4,1,1)
+tt = min(tm):0.01:ma(tm);
+tt = min(tm):0.01:max(tm);
+yy = spline(tm,ym,tt);
+plot(tt,yy,tm,ym,'o')
+%% zimesim 1. atvs
+subplot(4,1,2)
+yyd = diff(yy);
+plot(tt(1:end-1),yyd)
+plot(tt(1:end-1),yyd,tm,ym,'o')
+plot(tt(1:end-1),yyd)
+%% zimesim 2. atvs
+subplot(4,1,3)
+yydd=diff(ydd);
+yydd=diff(yyd);
+plot(tt(1:end-2),yydd)
+%% simesim 3. atvs
+subplot(4,1,4)
+yyddd=diff(yydd)
+plot(tt(1:end-3),yyddd)
+%% citas splainu funkcijas
+% pchip
+% bet 2.atvs nav nepartraukts
+figure
+subplot(3,1,1)
+yy= pchip(tm,ym,tt);
+plot(tt,yy,tm,ym,'o')
