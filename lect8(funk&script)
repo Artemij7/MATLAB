@@ -1,0 +1,60 @@
+%% 8. lekc
+% funkcijas un skripti
+t = 0:0.01:1;
+A0=0; A=1: f=3
+f=3
+A0=0; A=1;
+y=A0*sin(2*pi*f*t);
+y=A0+A*sin(2*pi*f*t);
+%% pieniemsim ks mes nezinam frekvenci
+A0=0; A=1; f=2;
+y=A0+A*sin(2*pi*f*t);
+% f -2 nepareizi
+%% daudz vnk rakstit faila, t.i skrip faila
+edit
+help mans fails
+help mans _fails
+help mans_fails
+mans_fails
+mans_funkcija
+%% tagad izveidosim funkciju
+mans_funkcija(1)
+mans_funkcija(5)
+mans_funkcija(3)
+mans_funkcija(4)
+mans_funkcija(3)
+%% funkcijas un skriptu atskiribas
+whos
+clear %nodzes darba atminu
+% palaizam skriptu
+mans_fails
+% pec skripta palai'sanas visi mainigie nonak uz darba atminu
+% kas notiek ar funkciju?
+clear
+mans_funkcija(3)
+% ar funkciju darbaa atmina nekas nenak
+mans_fails
+% no darba atminas visi mainigie nonak ari uz skriptu
+clear
+mans_fails
+mans_funkcija(3)
+clear
+mans_funkcija(3)
+%-- 18.03.2020 9:21 --%
+f=3;
+mans_funkcija(f)
+mans_funkcija(3)
+mans_funkcija(f)
+y2=mana_funkcija2(f);
+y2=mans_funkcija2(f);
+sin(pi/4)
+%% ka var atgriezt vairakus izejas arg
+[a,b]=mana_funkcija2(f);
+[a,b]=mans_funkcija2(f);
+plot(b,a)
+[~,b]=mana_funkcija2;
+[~,b]=mans_funkcija2;
+mans_funkcija2;
+%% funkcijas rokturis
+f=@sin; %seit ir roktura funkcija
+f(pi/4)
