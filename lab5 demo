@@ -1,0 +1,67 @@
+%% Nelineāras shēmas simulācija
+edit
+funx
+funx(0)
+funx
+funx(0)
+funx
+funx(0)
+%% mēs atrisinasim Nelineāro vienādojumu
+% izmantojot minējuma metodi
+funx(-1)
+funx(1)
+funx(0.5)
+funx(0.4)
+funx(0.6)
+funx(0.55)
+funx(0.555)
+funx(0.5555)
+funx(0.55555)
+funx(0.555)
+funx(0.556)
+funx(0.557)
+funx(0.556)
+funx(0.5565)
+funx(0.5569)
+funx(0.5568)
+funx(0.5565)
+%% ņūtona metode
+x=-2:0.01:5;
+y = funx(x);
+plot(x,y)
+% f(x) -> funx
+% f'(x) -> funx atvs
+syms i0 a E R UR
+diff(i0*(exp(a*(E-UR))-1)-UR/R,UR)
+edit
+% pirmais saknes tuvinajums x0=0
+x0=0;
+delta = funx(x0)/fund(x0);
+delta = funx(x0)/fund(x0)
+x0 = x0 - delta
+delta = funx(x0)/fund(x0);
+x0 = x0 - delta
+delta = funx(x0)/fund(x0);
+x0 = x0 - delta
+format long
+delta = funx(x0)/fund(x0);
+x0 = x0 - delta
+funx(x0)
+delta = funx(x0)/fund(x0);
+x0 = x0 - delta
+funx(x0)
+newmet5
+y=newmet5
+delta
+epsilon
+y=newmet5
+edit
+lab5
+fun5
+format short
+dbquit
+fun5
+delete newmet5.m
+delete funx.m
+delete fund.m
+fun5
