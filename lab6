@@ -1,0 +1,146 @@
+%% videejas un efektivas vertiibas
+% noteiksana
+t = linspace(0,pi/6,6);
+t = linspace(0,pi/2,6);
+% x = lab3_Artemijs(t)
+x = @(t) sin(t)
+sin
+sin(pi/6)
+x(pi/6)
+N = length(t)
+xvid3a = (1/(N-1))*
+sum([1 2 3 4])
+t
+t(1:end)
+t(1:end-1)
+xvid3a = (1/(N-1))*sum(x(t(1:end-1)))
+xvid3a = (1/(N-1))*sum(x(t(2:end)))
+xvid3a = (1/(N-1))*sum(x(t(1:end-1)))
+xvid3b = (1/(N-1))*sum(x(t(1:end-1)))
+xvid3a = (1/(N-1))*sum(x(t(1:end-1)))
+xvid3b = (1/(N-1))*sum(x(t(2:end)))
+h=t
+h=t(t(end)-t(1))/(N-1));
+h=t(t(end)-t(1))/(N-1);
+h=(t(end)-t(1))/(N-1);
+xvid3c = sum(x(t(1:end-1)+h/2))
+h=(t(end)-t(1))/(N-1);
+xvid3c = sum(x(t(1:end-1)+h/2))
+xvid3b = (1/(N-1))*sum(x(t(2:end)))
+xvid3b
+xvid3a
+xvid3c = (x(t(1:end-1)+h/2))
+xvid3c = sum(x(t(1:end-1)+h/2))
+xvid3c = sum(x(t(1:end-1)*h/2))
+xvid3c = sum(x(t(1:end-1):h/2))
+xvid3c = sum(x(t(1:end-1)+h/2))
+h=(t(end)-t(1))/(N-1);
+xvid3c = sum(x(t(1:end-1)+h/2))
+xvid3c = sum(x(t(1:end-1)+h/2))/5
+xvid3c = sum(x(t(1:end-1)+h/2))/(N-1)
+xvid4=1/(N-1)*((x(t(1))+x(t(end)))/2+sum(x(t(2:end-1))))
+%% patiesa vid vert
+syms t_simb
+xvid_patiesas=1/(t(end)-t(1))*int(sin(t_simb),t_simb,t(1),t(end))
+xvid_patiesas
+5734161139222659/9007199254740992
+edit
+t=0:0.01:8;
+y= lab3_demo_fun2(t);
+int_zero = 0 ;
+syms int_sin
+A0=0; A=2.5; T = (2.5-1)/3.5;
+f = 1/T;delay=1;f = 4;
+y_sin=A0+A*sin(2*pi*f*(t_sin-delay));
+y_sin=A0+A*sin(2*pi*f*(sin-delay));
+syms t_sin
+A0=0; A=2.5; T = (2.5-1)/3.5;
+f = 1/T;delay=1;f = 4;
+y_sin=A0+A*sin(2*pi*f*(t_sin-delay));
+int_sin=int(y_sin,t_sin,1,2.5)
+int_noise = 0
+syms t_const
+int_const=int(2.5,t_const,4.5,6.5)
+syms t_saw
+k = (2.5-(-2.5))/(6.5-8);
+delay = 7.25;
+y_saw = k*(t_saw-delay);
+int_saw=int(y_saw,t_saw,6.5,8)
+xvid_patiesas = 1/(t(end)-t(1))*...
+(int_zero+int_sin+int_noise+int_const+int_saw)
+5/8
+%-- 08.04.2020 9:31 --%
+edit
+mans_grafiks
+edit
+sveiks
+mans_funkcija2
+mans_funkcija
+clear
+%-- 08.04.2020 10:40 --%
+lab5
+%-- 14.04.2020 14:44 --%
+% 6 lab 2 dala
+%% Videjas vertibas atrasana izmantojot
+% matlaba iebuveto int funkciju
+%integral(rokturis_uz_funk,t_sak,_t_beig,'AbsTol',tol)
+%integral(rokturis_uz_funk,t_sak,_t_beig)
+t= 0:pi/100:pi/2;
+x = sin(t);
+x = @(t) sin(t);
+x(pi/2)
+xvid = 1/(t(end)-t(1))*integral(@sin,t(1),t(end))
+% piemers ka noformet rezult tabulaa
+% uz 3a formulas piemera
+dt = [0.1 0.01 0.001];
+for dtc = dt
+t = t(1):dtc:t(end);
+N = length(t);
+h = (t(end)-t(1))/(N-1);
+xvid3a = 1/(N-1)*sum(x(t(1:end-1)));
+fprintf('vid.v.3a=%f\t pie laika sola=%f \n',xvid3a,dtc);
+end
+fprintf('vid.v.3a=%0.4f \t pie laika sola=%f \n',xvid3a,dtc);
+% ----------------------------------------
+tol = [0.1 0.01 0.001 0.0001];
+for tolc = tol
+xvid = 1/(t(end)-t(1))*integral(@sin,t(1),t(end),'RelTol',tolc);
+fprintf('v.vert._ar_matlab_funk=%0.7f \t pie tol=%f \n',xvid,tol);
+end
+for tolc = tol
+xvid = 1/(t(end)-t(1))*integral(@sin,t(1),t(end),'RelTol',tolc);
+fprintf('v.vert._ar_matlab_funk=%0.7f \t pie tol=%f \n',xvid,tolc);
+end
+%efektivas vertibas aprekinis
+%ar 3a formulu
+% videja vertiba
+xvid3a = 1/(N-1)*sum(x(t(1:end-1)));
+% efektiva
+xkv = @(t) x(t).^2;
+xkv(pi/6)
+xef3a = sqrt(1/(N-1)*sum(xkv(t(1:end-1))));
+xef3a = sqrt(1/(N-1)*sum(xkv(t(1:end-1))))
+% efektivas vertibas aprekinis
+% ar matlab
+xvid = 1/(t(end)-t(1))*integral(@sin,t(1),t(end));
+% efektiva
+xef  = 1/(t(end)-t(1))*integral(xkv,t(1),t(end))
+xef  =sqrt(1/(t(end)-t(1))*integral(xkv,t(1),t(end)))
+% patiesas efek vert
+syms t_sin
+int_sin=int(sin(t_sin)^2,t(1),t(end))
+vid_pateisa = sqrt(1/(t(end)-t(1))*int_sin)
+vid_pateisa = double(sqrt(1/(t(end)-t(1))*int_sin))
+simulink
+%% 6.lab uzd
+% signal - lab3
+% 1) aprekinat signala patieso videjo efektivo vertibu
+% 2) izmantojot 3c formulu prekinat videjo un efektivo vertibas
+% pie sekojosiem laika soliem
+% dt = [0.1 0.01 0.001];
+% noformettabulaa
+% 3) izmantojot matlaba int.funk aprekinat vid un ef vertibas pie
+% 'RelTol' = [1e-1 1e-2 1e-3];
+% rezult tabula veida
+% 4) pievienot simulinku vid vert
+% 5) secinajumos salidzinat rezultatus
